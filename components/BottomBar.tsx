@@ -1,13 +1,5 @@
 import { View, StyleSheet, Button } from "react-native";
 
-function BottomButton(title: string, destination: string) {
-  return (
-    <View style={styles.button}>
-      <Button title={title} color={"black"} />
-    </View>
-  );
-}
-
 const BottomBar = ({ navigation }) => {
   return (
     <View style={styles.bar}>
@@ -21,8 +13,13 @@ const BottomBar = ({ navigation }) => {
   );
 };
 
-export default BottomBar;
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   bar: {
     width: "100%",
     position: "absolute",
@@ -34,5 +31,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
   },
-  button: { width: "30%", color: "#000", fontFamily: "sans-serif" },
 });
+
+export default BottomBar;

@@ -4,7 +4,9 @@ import BottomBar from "./components/BottomBar";
 import PageHeading from "./components/PageHeading";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import SettingsScreen from "./app/tabs/Settings";
+import ChartScreen from "./app/tabs/charts";
 import HomeScreen from "./app/tabs";
 // export default function App() {
 //   return (
@@ -30,6 +32,7 @@ const App = () => {
           options={{ title: "Welcome" }}
         />
         <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Graphs" component={ChartScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
