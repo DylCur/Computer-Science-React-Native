@@ -1,36 +1,37 @@
-import { Button, StyleSheet, View, Text } from "react-native";
+import { Button, StyleSheet, Text, Image } from "react-native";
+import theme from "../../constants/colours";
+import * as React from "react";
+import { View, useWindowDimensions } from "react-native";
+import { TabView, SceneMap } from "react-native-tab-view";
+import ChartScreen from "./charts";
+import SettingsScreen from "./Settings";
+import HomeScreen from "./home";
 
-const HomeScreen = ({ navigation }) => {
+const renderScene = SceneMap({
+  first: HomeScreen,
+  second: ChartScreen,
+  third: SettingsScreen,
+});
+
+const routes = [
+  { key: "first", title: "Home" },
+  { key: "second", title: "Graphs" },
+  { key: "third", title: "Charts" },
+];
+
+const TabManager = ({ navigation }) => {
+  const layout = useWindowDimensions();
+  const [index, setIndex] = React.useState(0);
+
   return (
-    <View style={styles.page}>
-      <View style={styles.other}>
-        {/* Other content */}
-        <View style={header.header}>
-          <Text style={header.text}>Welcome back, [Insert Name]</Text>
-        </View>
-
-        <View style={statistics.stats}>
-          <View style={statistics.one}>
-            <View style={statistics.bubble}>
-              <Text>Tiktok Usage</Text>
-            </View>
-          </View>
-          <View style={statistics.bubble}>
-            <Text>Tiktok Usage</Text>
-          </View>
-        </View>
-      </View>
-
-      {/* Bottom Bar */}
-      <View style={styles.bar}>
-        <Button title="Home" onPress={() => navigation.navigate("Home")} />
-        <Button title="Graphs" onPress={() => navigation.navigate("Graphs")} />
-        <Button
-          title="Settings"
-          onPress={() => navigation.navigate("Settings")}
-        />
-      </View>
-    </View>
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={{ width: layout.width }}
+      tabBarPosition="bottom"
+      style={{ marginTop: "5%", marginBottom: "3%" }}
+    />
   );
 };
 
@@ -42,14 +43,12 @@ const statistics = StyleSheet.create({
   },
   bubble: {
     backgroundColor: "#CAD6BC",
-    // padding: 20,
     borderRadius: 40,
-    height: "30%",
-    width: "30%",
+    minHeight: "30%",
+    minWidth: "70%",
     justifyContent: "center",
     alignItems: "center",
   },
-  one: { marginRight: 200 },
 });
 
 const header = StyleSheet.create({
@@ -91,4 +90,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default TabManager;

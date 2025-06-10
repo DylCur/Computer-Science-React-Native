@@ -8,6 +8,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SettingsScreen from "./app/tabs/Settings";
 import ChartScreen from "./app/tabs/charts";
 import HomeScreen from "./app/tabs";
+
+import TabManager from "./app/tabs";
 // export default function App() {
 //   return (
 //     <NavigationContainer>
@@ -24,17 +26,18 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: "Welcome" }}
-        />
-        <Stack.Screen name="Settings" component={SettingsScreen} />
-        <Stack.Screen name="Graphs" component={ChartScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //     <Stack.Screen
+    //       name="Home"
+    //       component={HomeScreen}
+    //       options={{ title: "Home" }}
+    //     />
+    //     <Stack.Screen name="Settings" component={SettingsScreen} />
+    //     <Stack.Screen name="Graphs" component={ChartScreen} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
+    <TabManager />
   );
 };
 

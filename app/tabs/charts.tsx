@@ -1,7 +1,8 @@
-import { Text } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
+import custom_heading from "../../components/heading";
 
-const ChartScreen = ({ navigation, route }) => {
-  return <Text>These are the graphs</Text>;
+const ChartScreen = () => {
+  return <custom_heading />;
 };
 
 export default ChartScreen;
